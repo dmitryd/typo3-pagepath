@@ -72,9 +72,19 @@ class tx_pagepath_resolver {
 			$typolinkConf = array(
 				'parameter' => $this->pageId,
 				'useCacheHash' => $this->parameters != '',
-				'additionalParams' => $this->parameters,
 			);
-			echo $cObj->typoLink_URL($typolinkConf);
+			if ($this->parameters) {
+				$typolinkConf['additionalParams'] = $this->parameters;
+			}
+			$url = $cObj->typoLink_URL($typolinkConf);
+			if ($url == '') {
+				$url = '/';
+			}
+			$parts = parse_url($url);
+			if ($parts['host'] == '') {
+				$url = t3lib_div::locationHeaderUrl($url);
+			}
+			echo $url;
 		}
 	}
 
