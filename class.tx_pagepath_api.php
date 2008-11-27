@@ -52,12 +52,19 @@ class tx_pagepath_api {
 		if ($parameters != '' && $parameters{0} == '&') {
 			$data['parameters'] = $parameters;
 		}
-		$url = 'index.php?eID=pagepath&data=' . base64_encode(serialize($data));
-		$result = t3lib_div::getURL(t3lib_div::locationHeaderUrl($url));
+		$url = t3lib_div::getIndpEnv('TYPO3_SITE_URL') . 'index.php?eID=pagepath&data=' . base64_encode(serialize($data));
+		$result = t3lib_div::getURL($url);
 		if (is_callable('filter_var') && !filter_var($result, FILTER_VALIDATE_URL)) {
 			$result = '';
 		}
-		return t3lib_div::locationHeaderUrl($result);
+		if ($result) {
+			// See if we need to prepend domain part
+			$urlParts = parse_url($result);
+			if ($urlParts['host'] == '') {
+				$result = t3lib_div::getIndpEnv('TYPO3_SITE_URL') . ($result{0} == '/' ? substr($result, 1) : $result);
+			}
+		}
+		return $result;
 	}
 }
 
