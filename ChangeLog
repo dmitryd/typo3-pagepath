@@ -1,3 +1,7 @@
+2009-01-07  Dmitry Dulepov  <dmitry@typo3.org>
+
+	* Added TYPO3 cookies to the request because it may affect the generated path
+
 2008-11-27  Dmitry Dulepov  <dmitry@typo3.org>
 
 	* Fixed problem: empty path with RealURL and no config.absRefPrefix
