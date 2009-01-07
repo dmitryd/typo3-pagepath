@@ -103,8 +103,9 @@ class tx_pagepath_resolver {
 		require_once(PATH_t3lib . 'class.t3lib_cs.php');
 
 		$tsfeClassName = t3lib_div::makeInstanceClassName('tslib_fe');
+		$GLOBALS['TSFE'] = new $tsfeClassName($GLOBALS['TYPO3_CONF_VARS'], $this->pageId, '');
 
-		$initCache = version_compare(TYPO3_branch, '4.3', '>=');
+		$initCache = !isset($GLOBALS['typo3CacheManager']) && version_compare(TYPO3_branch, '4.3', '>=');
 		if ($initCache) {
 			require_once(PATH_t3lib . 'class.t3lib_cache.php');
 			require_once(PATH_t3lib . 'cache/class.t3lib_cache_abstractbackend.php');
@@ -123,10 +124,7 @@ class tx_pagepath_resolver {
 			$cacheFactoryClass = t3lib_div::makeInstanceClassName('t3lib_cache_Factory');
 			$GLOBALS['typo3CacheFactory'] = new $cacheFactoryClass($GLOBALS['typo3CacheManager']);
 			unset($cacheFactoryClass);
-		}
 
-		$GLOBALS['TSFE'] = new $tsfeClassName($GLOBALS['TYPO3_CONF_VARS'], $this->pageId, '');
-		if ($initCache) {
 			$GLOBALS['TSFE']->initCaches();
 		}
 		$GLOBALS['TSFE']->connectToMySQL();
