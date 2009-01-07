@@ -2,6 +2,7 @@
 
 	* Added TYPO3 cookies to the request because it may affect the generated path
 	* Updated cache initialization to reflect latest TYPO3 4.3 changes
+	* Released version 0.1.3
 
 2008-11-27  Dmitry Dulepov  <dmitry@typo3.org>
 
