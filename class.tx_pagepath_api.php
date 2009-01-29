@@ -55,7 +55,7 @@ class tx_pagepath_api {
 		$url = t3lib_div::getIndpEnv('TYPO3_SITE_URL') . 'index.php?eID=pagepath&data=' . base64_encode(serialize($data));
 		// Send TYPO3 cookies as this may affect path generation
 		$headers = array(
-			'Cookie' => 'be_typo_user=' . $_COOKIE['be_typo_user'] . '; fe_typo_user=' . $_COOKIE['fe_typo_user']
+			'Cookie: fe_typo_user=' . $_COOKIE['fe_typo_user']
 		);
 		$result = t3lib_div::getURL($url, false, $headers);
 		if (is_callable('filter_var') && !filter_var($result, FILTER_VALIDATE_URL)) {

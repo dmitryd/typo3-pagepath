@@ -1,3 +1,7 @@
+2009-01-29  Dmitry Dulepov  <dmitry@typo3.org>
+
+	* Fixed bug: wrong HTTP headers array is passed to the t3lib_div::getURL()
+
 2009-01-07  Dmitry Dulepov  <dmitry@typo3.org>
 
 	* Added TYPO3 cookies to the request because it may affect the generated path
