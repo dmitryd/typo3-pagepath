@@ -3,7 +3,7 @@
 ########################################################################
 # Extension Manager/Repository config file for ext: "pagepath"
 #
-# Auto generated 07-01-2009 10:41
+# Auto generated 29-01-2009 18:35
 #
 # Manual updates:
 # Only the data in the array - anything else is removed by next write.
@@ -29,7 +29,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'clearCacheOnLoad' => 0,
 	'lockType' => '',
 	'author_company' => '',
-	'version' => '0.1.3',
+	'version' => '0.1.4',
 	'constraints' => array(
 		'depends' => array(
 			'typo3' => '4.2.0-4.99.99',
@@ -40,7 +40,7 @@ $EM_CONF[$_EXTKEY] = array(
 		'suggests' => array(
 		),
 	),
-	'_md5_values_when_last_written' => 'a:6:{s:9:"ChangeLog";s:4:"7288";s:25:"class.tx_pagepath_api.php";s:4:"1d2c";s:30:"class.tx_pagepath_resolver.php";s:4:"631e";s:12:"ext_icon.gif";s:4:"a89b";s:17:"ext_localconf.php";s:4:"81af";s:14:"doc/manual.sxw";s:4:"7d24";}',
+	'_md5_values_when_last_written' => 'a:6:{s:9:"ChangeLog";s:4:"4748";s:25:"class.tx_pagepath_api.php";s:4:"2e47";s:30:"class.tx_pagepath_resolver.php";s:4:"631e";s:12:"ext_icon.gif";s:4:"a89b";s:17:"ext_localconf.php";s:4:"81af";s:14:"doc/manual.sxw";s:4:"7d24";}',
 	'suggests' => array(
 	),
 );
