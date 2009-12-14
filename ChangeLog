@@ -1,3 +1,7 @@
+2009-12-14  Dmitry Dulepov  <dmitry.dulepov@gmail.com>
+
+	* Removed calls to the cache framework
+
 2009-01-29  Dmitry Dulepov  <dmitry@typo3.org>
 
 	* Fixed bug: wrong HTTP headers array is passed to the t3lib_div::getURL()
