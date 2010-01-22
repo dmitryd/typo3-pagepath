@@ -1,3 +1,7 @@
+2010-01-22  Dmitry Dulepov  <dmitry.dulepov+typo3svn@gmail.com>
+
+	* Updated for compatibility with TYPO3 4.3
+
 2009-12-14  Dmitry Dulepov  <dmitry.dulepov@gmail.com>
 
 	* Removed calls to the cache framework

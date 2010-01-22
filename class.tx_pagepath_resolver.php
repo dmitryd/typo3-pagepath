@@ -48,7 +48,7 @@ class tx_pagepath_resolver {
 	 * @return	void
 	 */
 	public function __construct() {
-		$params = unserialize(base64_decode(t3lib_div::GPvar('data')));
+		$params = unserialize(base64_decode(t3lib_div::_GP('data')));
 		if (is_array($params)) {
 			$this->pageId = $params['id'];
 			$this->parameters = $params['parameters'];
@@ -102,12 +102,17 @@ class tx_pagepath_resolver {
 		require_once(PATH_t3lib . 'class.t3lib_tstemplate.php');
 		require_once(PATH_t3lib . 'class.t3lib_cs.php');
 
-		$tsfeClassName = t3lib_div::makeInstanceClassName('tslib_fe');
-		$GLOBALS['TSFE'] = new $tsfeClassName($GLOBALS['TYPO3_CONF_VARS'], $this->pageId, '');
-		$GLOBALS['TSFE']->connectToMySQL();
+		if (version_compare(TYPO3_version, '4.3', '<')) {
+			$tsfeClassName = t3lib_div::makeInstanceClassName('tslib_fe');
+			$GLOBALS['TSFE'] = new $tsfeClassName($GLOBALS['TYPO3_CONF_VARS'], $this->pageId, '');
+		}
+		else {
+			$GLOBALS['TSFE'] = t3lib_div::makeInstance('tslib_fe', $GLOBALS['TYPO3_CONF_VARS'], $this->pageId, '');
+		}
+		$GLOBALS['TSFE']->connectToDB();
 		$GLOBALS['TSFE']->initFEuser();
 		$GLOBALS['TSFE']->determineId();
-//		$GLOBALS['TSFE']->getCompressedTCarray();
+		$GLOBALS['TSFE']->getCompressedTCarray();
 		$GLOBALS['TSFE']->initTemplate();
 		$GLOBALS['TSFE']->getConfigArray();
 
