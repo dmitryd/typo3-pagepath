@@ -3,7 +3,7 @@
 ########################################################################
 # Extension Manager/Repository config file for ext "pagepath".
 #
-# Auto generated 22-01-2010 11:56
+# Auto generated 16-12-2011 11:48
 #
 # Manual updates:
 # Only the data in the array - everything else is removed by next
@@ -21,7 +21,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'conflicts' => '',
 	'priority' => '',
 	'module' => '',
-	'state' => 'beta',
+	'state' => 'stable',
 	'internal' => '',
 	'uploadfolder' => 0,
 	'createDirs' => '',
@@ -29,7 +29,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'clearCacheOnLoad' => 0,
 	'lockType' => '',
 	'author_company' => '',
-	'version' => '0.1.6',
+	'version' => '1.0.0',
 	'constraints' => array(
 		'depends' => array(
 			'typo3' => '4.2.0-4.99.99',
@@ -40,7 +40,7 @@ $EM_CONF[$_EXTKEY] = array(
 		'suggests' => array(
 		),
 	),
-	'_md5_values_when_last_written' => 'a:6:{s:9:"ChangeLog";s:4:"7111";s:25:"class.tx_pagepath_api.php";s:4:"2e47";s:30:"class.tx_pagepath_resolver.php";s:4:"614c";s:12:"ext_icon.gif";s:4:"a89b";s:17:"ext_localconf.php";s:4:"81af";s:14:"doc/manual.sxw";s:4:"0f8f";}',
+	'_md5_values_when_last_written' => 'a:6:{s:9:"ChangeLog";s:4:"f7b0";s:25:"class.tx_pagepath_api.php";s:4:"ec5b";s:30:"class.tx_pagepath_resolver.php";s:4:"614c";s:12:"ext_icon.gif";s:4:"a89b";s:17:"ext_localconf.php";s:4:"81af";s:14:"doc/manual.sxw";s:4:"7d24";}',
 	'suggests' => array(
 	),
 );
