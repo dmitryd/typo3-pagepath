@@ -40,6 +40,8 @@ class tx_pagepath_api {
 	/**
 	 * Creates URL to page using page id and parameters
 	 *
+	 * @param int $pageId
+	 * @param string $parameters
 	 * @return	string	Path to page or empty string
 	 */
 	static public function getPagePath($pageId, $parameters = '') {
@@ -52,23 +54,38 @@ class tx_pagepath_api {
 		if ($parameters != '' && $parameters{0} == '&') {
 			$data['parameters'] = $parameters;
 		}
-		$url = t3lib_div::getIndpEnv('TYPO3_SITE_URL') . 'index.php?eID=pagepath&data=' . base64_encode(serialize($data));
-		// Send TYPO3 cookies as this may affect path generation
-		$headers = array(
-			'Cookie: fe_typo_user=' . $_COOKIE['fe_typo_user']
-		);
-		$result = t3lib_div::getURL($url, false, $headers);
-		if (is_callable('filter_var') && !filter_var($result, FILTER_VALIDATE_URL)) {
-			$result = '';
-		}
-		if ($result) {
-			// See if we need to prepend domain part
-			$urlParts = parse_url($result);
-			if ($urlParts['host'] == '') {
-				$result = t3lib_div::getIndpEnv('TYPO3_SITE_URL') . ($result{0} == '/' ? substr($result, 1) : $result);
+		$siteUrl = self::getSiteUrl($pageId);
+		if ($siteUrl) {
+			$url = $siteUrl . 'index.php?eID=pagepath&data=' . base64_encode(serialize($data));
+			// Send TYPO3 cookies as this may affect path generation
+			$headers = array(
+				'Cookie: fe_typo_user=' . $_COOKIE['fe_typo_user']
+			);
+			$result = t3lib_div::getURL($url, false, $headers);
+			if (is_callable('filter_var') && !filter_var($result, FILTER_VALIDATE_URL)) {
+				$result = '';
+			}
+			if ($result) {
+				// See if we need to prepend domain part
+				$urlParts = parse_url($result);
+				if ($urlParts['host'] == '') {
+					$result = t3lib_div::getIndpEnv('TYPO3_SITE_URL') . ($result{0} == '/' ? substr($result, 1) : $result);
+				}
 			}
 		}
 		return $result;
+	}
+
+	/**
+	 * Obtains site URL.
+	 *
+	 * @static
+	 * @param int $pageId
+	 * @return string
+	 */
+	static protected function getSiteUrl($pageId) {
+		$domain = t3lib_BEfunc::firstDomainRecord(t3lib_BEfunc::BEgetRootLine($pageId));
+		return $domain ? 'http://' . $domain . '/' : t3lib_div::getIndpEnv('TYPO3_SITE_URL');
 	}
 }
 

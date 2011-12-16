@@ -1,3 +1,7 @@
+2011-12-16  Dmitry Dulepov  <dmitry.dulepov@gmail.com>
+
+	* Fixed bug #8725: Pagepath generation does not work in CLI mode
+
 2010-01-22  Dmitry Dulepov  <dmitry.dulepov+typo3svn@gmail.com>
 
 	* Updated for compatibility with TYPO3 4.3
