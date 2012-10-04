@@ -62,15 +62,15 @@ class tx_pagepath_api {
 				'Cookie: fe_typo_user=' . $_COOKIE['fe_typo_user']
 			);
 			$result = t3lib_div::getURL($url, false, $headers);
-			if (!is_array(parse_url($result))) {
-				// filter_var is too strict (for example, underscopes make it fail). So we use parse_url here for a quick check.
+			$urlParts = parse_url($result);
+			if (!is_array($urlParts)) {
+				// filter_var is too strict (for example, underscore characters make it fail). So we use parse_url here for a quick check.
 				$result = '';
 			}
-			if ($result) {
+			elseif ($result) {
 				// See if we need to prepend domain part
-				$urlParts = parse_url($result);
 				if ($urlParts['host'] == '') {
-					$result = t3lib_div::getIndpEnv('TYPO3_SITE_URL') . ($result{0} == '/' ? substr($result, 1) : $result);
+					$result = rtrim($siteUrl, '/') .  '/' . ltrim($result, '/');
 				}
 			}
 		}
