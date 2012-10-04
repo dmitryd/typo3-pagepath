@@ -1,6 +1,7 @@
 2012-10-12  Dmitry Dulepov  <dmitry.dulepov@gmail.com>
 
 	* Change validation of URLs from filter_var to parse_url
+	* Set TYPO3 dependency to 4.5.0 minimum
 
 2011-12-16  Dmitry Dulepov  <dmitry.dulepov@gmail.com>
 
