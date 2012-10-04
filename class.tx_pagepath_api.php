@@ -62,7 +62,8 @@ class tx_pagepath_api {
 				'Cookie: fe_typo_user=' . $_COOKIE['fe_typo_user']
 			);
 			$result = t3lib_div::getURL($url, false, $headers);
-			if (is_callable('filter_var') && !filter_var($result, FILTER_VALIDATE_URL)) {
+			if (!is_array(parse_url($result))) {
+				// filter_var is too strict (for example, underscopes make it fail). So we use parse_url here for a quick check.
 				$result = '';
 			}
 			if ($result) {
