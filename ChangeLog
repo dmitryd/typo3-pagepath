@@ -1,3 +1,7 @@
+2013-03-13  Dmitry Dulepov  <dmitry.dulepov@gmail.com>
+
+	* Updated TYPO3 dependency version
+
 2012-10-12  Dmitry Dulepov  <dmitry.dulepov@gmail.com>
 
 	* Change validation of URLs from filter_var to parse_url
