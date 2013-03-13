@@ -1,6 +1,7 @@
 2013-03-13  Dmitry Dulepov  <dmitry.dulepov@gmail.com>
 
 	* Updated TYPO3 dependency version
+	* Fixed Forge issue #6481: Add support for autoloading
 
 2012-10-12  Dmitry Dulepov  <dmitry.dulepov@gmail.com>
 
