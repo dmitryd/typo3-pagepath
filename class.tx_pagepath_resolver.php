@@ -52,6 +52,10 @@ class tx_pagepath_resolver {
 			$this->parameters = $params['parameters'];
 		}
 
+		if (method_exists('tslib_eidtools', 'initTCA')) {
+			tslib_eidtools::initTCA();
+		}
+
 		tslib_eidtools::connectDB();
 	}
 
