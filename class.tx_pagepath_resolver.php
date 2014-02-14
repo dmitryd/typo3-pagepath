@@ -28,8 +28,6 @@
  * [CLASS/FUNCTION INDEX of SCRIPT]
  */
 
-require_once(PATH_tslib . 'class.tslib_eidtools.php');
-
 /**
  * This class create frontend page address from the page id value and parameters.
  *
@@ -92,14 +90,6 @@ class tx_pagepath_resolver {
 	 * @return	void
 	 */
 	protected function createTSFE() {
-		require_once(PATH_tslib . 'class.tslib_fe.php');
-		require_once(PATH_t3lib . 'class.t3lib_page.php');
-		require_once(PATH_tslib . 'class.tslib_content.php');
-		require_once(PATH_t3lib . 'class.t3lib_userauth.php' );
-		require_once(PATH_tslib . 'class.tslib_feuserauth.php');
-		require_once(PATH_t3lib . 'class.t3lib_tstemplate.php');
-		require_once(PATH_t3lib . 'class.t3lib_cs.php');
-
 		$GLOBALS['TSFE'] = t3lib_div::makeInstance('tslib_fe', $GLOBALS['TYPO3_CONF_VARS'], $this->pageId, '');
 
 		$GLOBALS['TSFE']->connectToDB();
@@ -110,13 +100,14 @@ class tx_pagepath_resolver {
 		$GLOBALS['TSFE']->getConfigArray();
 
 		// Set linkVars, absRefPrefix, etc
-		require_once(PATH_tslib . 'class.tslib_pagegen.php');
 		TSpagegen::pagegenInit();
 	}
 
 }
 
+/** @noinspection PhpUndefinedVariableInspection */
 if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/pagepath/class.tx_pagepath_resolver.php']) {
+	/** @noinspection PhpIncludeInspection */
 	include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/pagepath/class.tx_pagepath_resolver.php']);
 }
 
@@ -129,5 +120,3 @@ else {
 	/* @var $resolver tx_pagepath_resolver */
 	$resolver->main();
 }
-
-?>
