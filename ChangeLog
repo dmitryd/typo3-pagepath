@@ -1,3 +1,16 @@
+2014-04-04  Jacob Rasmussen  <jacob@omnius.dk>
+
+	* Add additional domain resolver logic from BEfunc
+	* Add compatibility layer to enable easier upgrade path
+
+2013-09-16  Jacob Rasmussen  <jacob@omnius.dk>
+
+	* Migration to namespaces
+	* Refactored deprecated methods - 6.x compatibility
+	* Updated TYPO3 dependency version
+	* Added useCacheHash option
+	* Removed autoloader script
+
 2013-03-13  Dmitry Dulepov  <dmitry.dulepov@gmail.com>
 
 	* Updated TYPO3 dependency version
