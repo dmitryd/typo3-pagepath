@@ -2,7 +2,7 @@
 /***************************************************************
 *  Copyright notice
 *
-*  (c) 2008 Dmitry Dulepov <dmitry@typo3.org>
+*  (c) 2008-2014 Dmitry Dulepov <dmitry@typo3.org>
 *  All rights reserved
 *
 *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -21,12 +21,6 @@
 *
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
-
-/**
- * $Id$
- *
- * [CLASS/FUNCTION INDEX of SCRIPT]
- */
 
 /**
  * This class create frontend page address from the page id value and parameters.
@@ -74,6 +68,10 @@ class tx_pagepath_api {
 				}
 			}
 		}
+		else {
+			$result = '';
+		}
+
 		return $result;
 	}
 
@@ -86,12 +84,14 @@ class tx_pagepath_api {
 	 */
 	static protected function getSiteUrl($pageId) {
 		$domain = t3lib_BEfunc::firstDomainRecord(t3lib_BEfunc::BEgetRootLine($pageId));
-		return $domain ? 'http://' . $domain . '/' : t3lib_div::getIndpEnv('TYPO3_SITE_URL');
+		$pageRecord = t3lib_BEfunc::getRecord('pages', $pageId);
+		$scheme = is_array($pageRecord) && isset($pageRecord['url_scheme']) && $pageRecord['url_scheme'] == t3lib_utility_Http::SCHEME_HTTPS ? 'https' : 'http';
+		return $domain ? $scheme . '://' . $domain . '/' : t3lib_div::getIndpEnv('TYPO3_SITE_URL');
 	}
 }
 
+/** @noinspection PhpUndefinedVariableInspection */
 if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/pagepath/class.tx_pagepath_api.php']) {
+	/** @noinspection PhpIncludeInspection */
 	include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/pagepath/class.tx_pagepath_api.php']);
 }
-
-?>
