@@ -115,7 +115,8 @@ if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/pagepat
 	include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/pagepath/class.tx_pagepath_resolver.php']);
 }
 
-if (t3lib_div::getIndpEnv('REMOTE_ADDR') != $_SERVER['SERVER_ADDR']) {
+if (t3lib_div::getIndpEnv('REMOTE_ADDR') != $_SERVER['SERVER_ADDR'] &&
+    t3lib_div::getIndpEnv('REMOTE_ADDR') != $_SERVER['LOCAL_ADDR']) {
 	header('HTTP/1.0 403 Access denied');
 	// Empty output!!!
 }
