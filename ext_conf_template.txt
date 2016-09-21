@@ -1,0 +1,2 @@
+# cat=base//10; type=string; label=Allowed addresses: List of allowed addresses, see GeneralUtility::cmpIP, like devIPmask.
+allow_ip = 127.0.0.1
